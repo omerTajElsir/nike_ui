@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:nike_ui/details.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -11,7 +12,8 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   List<String> headlines = [
     "All",
     "Air Max",
@@ -20,6 +22,68 @@ class _MyHomePageState extends State<MyHomePage> {
     "Running",
     "Jumbing"
   ];
+
+  List<Color> colors = [
+    Color(0xFFFF88BE),
+    Color(0xFF85D8C5),
+    Color(0xFF746BDE),
+    Color(0xFF85D8C5),
+  ];
+
+  ValueNotifier<double> notifier = ValueNotifier<double>(0);
+
+  late AnimationController controller;
+  late Animation colorAnimation;
+  late Animation colorAnimation1;
+
+  int _previousPage = 0;
+  int _currrentPage = 0;
+  PageController _pageController = PageController(
+    viewportFraction: 0.8,
+    initialPage: 0,
+  );
+
+  void _onScroll() {
+    if (_pageController.page!.toInt() == _pageController.page) {
+      _previousPage = _pageController.page!.toInt();
+    }
+    setState(() {
+      _currrentPage = _pageController.page!.toInt();
+    });
+
+    //notifier.value = _pageController.page! - _previousPage;
+    controller.value = _pageController.page! - _pageController.page!.toInt();
+  }
+
+  @override
+  void initState() {
+    _pageController = PageController(
+      initialPage: 0,
+      viewportFraction: 0.8,
+    )..addListener(_onScroll);
+
+    controller = AnimationController(vsync: this);
+    colorAnimation =
+        Tween<double>(begin: -math.pi / 4, end: math.pi * notifier.value / 4)
+            .animate(controller);
+    colorAnimation1 =
+        Tween<double>(begin: math.pi * notifier.value / 4, end: -math.pi / 4)
+            .animate(controller);
+
+    controller.addListener(() {
+      setState(() {});
+    });
+
+    _previousPage = _pageController.initialPage;
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    notifier.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,55 +149,79 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               height: 400,
               child: PageView.builder(
-                controller: PageController(
-                  viewportFraction: 0.8,
-                  initialPage: 0,
-                ),
+                controller: _pageController,
                 itemCount: headlines.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return Container(
-                    width: 300,
+                    margin: EdgeInsets.all(5),
                     child: Stack(
                       children: [
-                        Container(
-                          margin: EdgeInsets.only(right: 40),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                            color: Colors.pink,
-                          ),
-                          child: Column(
-                            children: [
-                              Text(
-                                "Nike Air Max",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.bold),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                transitionDuration: Duration(seconds: 2),
+                                pageBuilder: (_, __, ___) => DetailsPage(
+                                  index: index,
+                                ),
                               ),
-                              Text("Men's Fashion Shows",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 18)),
-                              Text("128 \$",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold)),
-                            ],
+                            );
+                          },
+                          child: Hero(
+                            tag: 'header$index',
+                            child: Container(
+                              width: 200,
+                              margin: EdgeInsets.only(right: 40),
+                              decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30)),
+                                color: Colors.pink,
+                              ),
+                              padding: EdgeInsets.only(left: 10, top: 30),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Nike Air Max",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text("Men's Fashion Shows",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 14)),
+                                  Text("128 \$",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold)),
+                                ],
+                              ),
+                            ),
                           ),
                         ),
                         Align(
                           alignment: Alignment.centerRight,
-                          child: Transform.rotate(
-                            angle: -math.pi / 4,
-                            child: Container(
-                                width: 250,
-                                height: 250,
-                                alignment: Alignment.centerRight,
-                                child: Image.asset(
-                                  "assets/1.png",
-                                  fit: BoxFit.contain,
-                                )),
+                          child: AnimatedBuilder(
+                            animation: notifier,
+                            builder: (context, _) {
+                              return Transform.rotate(
+                                angle: _currrentPage == index
+                                    ? colorAnimation1.value
+                                    : colorAnimation.value,
+                                child: Container(
+                                    width: 250,
+                                    height: 250,
+                                    alignment: Alignment.centerRight,
+                                    child: Image.asset(
+                                      "assets/1.png",
+                                      fit: BoxFit.contain,
+                                    )),
+                              );
+                            },
                           ),
                         )
                       ],
