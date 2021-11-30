@@ -97,19 +97,19 @@ class _MyHomePageState extends State<MyHomePage>
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Icon(Icons.check),
+        title: Image.asset("assets/nike.png"),
         iconTheme: IconThemeData(color: Colors.black),
         centerTitle: true,
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.card_travel))],
+        actions: [Image.asset("assets/cart.png")],
         leading: IconButton(
           onPressed: () {},
-          icon: Icon(Icons.menu),
+          icon: Image.asset("assets/menu.png"),
         ),
       ),
       body: ListView(
         children: [
           Container(
-            height: 70,
+            height: 60,
             padding: EdgeInsets.only(left: 30, right: 30),
             child: ListView.builder(
               itemCount: headlines.length,
@@ -124,14 +124,6 @@ class _MyHomePageState extends State<MyHomePage>
                               headlines[index],
                               style:
                                   TextStyle(color: Colors.black, fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Container(
-                              width: 40,
-                              height: 3,
-                              color: Colors.black,
                             )
                           ],
                         ),
@@ -142,8 +134,8 @@ class _MyHomePageState extends State<MyHomePage>
                           children: [
                             Text(
                               headlines[index],
-                              style:
-                                  TextStyle(color: Colors.grey, fontSize: 18),
+                              style: TextStyle(
+                                  color: Colors.grey.shade400, fontSize: 18),
                             ),
                           ],
                         ),
@@ -152,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage>
             ),
           ),
           Container(
-            height: 370,
+            height: 350,
             child: PageView.builder(
               controller: _pageController,
               itemCount: 4,
@@ -255,7 +247,151 @@ class _MyHomePageState extends State<MyHomePage>
                 );
               },
             ),
-          )
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 20, bottom: 10),
+            child: Text(
+              "New Arivals",
+              style: TextStyle(color: Colors.black87, fontSize: 20),
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            height: 100,
+            padding: EdgeInsets.only(left: 30, right: 30),
+            child: Row(
+              children: [
+                Container(
+                  width: 120,
+                  height: 100,
+                  child: Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: EdgeInsets.all(0),
+                          child: Material(
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                            color: Colors.grey.shade200,
+                            child: Container(
+                              width: 100,
+                              height: 100,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Transform.rotate(
+                          angle: math.pi * notifier.value,
+                          child: Container(
+                              width: 100,
+                              height: 100,
+                              alignment: Alignment.centerRight,
+                              child: Image.asset(
+                                "assets/1.png",
+                                fit: BoxFit.contain,
+                              )),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Nike ZoomX fit",
+                        style: TextStyle(color: Colors.black87, fontSize: 16),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        "New Running shoes",
+                        style: TextStyle(color: Colors.black87, fontSize: 16),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Container(
+            width: double.infinity,
+            height: 100,
+            padding: EdgeInsets.only(left: 30, right: 30),
+            child: Row(
+              children: [
+                Container(
+                  width: 120,
+                  height: 100,
+                  child: Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: EdgeInsets.all(0),
+                          child: Material(
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                            color: Colors.grey.shade200,
+                            child: Container(
+                              width: 100,
+                              height: 100,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Transform.rotate(
+                          angle: math.pi * notifier.value,
+                          child: Container(
+                              width: 100,
+                              height: 100,
+                              alignment: Alignment.centerRight,
+                              child: Image.asset(
+                                "assets/3.png",
+                                fit: BoxFit.contain,
+                              )),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Nike React Presto",
+                        style: TextStyle(color: Colors.black87, fontSize: 16),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        "Men's fation shoes",
+                        style: TextStyle(color: Colors.black87, fontSize: 16),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
         ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
