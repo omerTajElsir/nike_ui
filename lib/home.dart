@@ -160,6 +160,9 @@ class _MyHomePageState extends State<MyHomePage>
                           index: index,
                           color: colors[index],
                           image: Images[index],
+                          name: "Nike Air Max",
+                          desc: "Nike, Inc. is an American multinational that is engaged in the design.",
+                          price: "160",
                         ),
                       ),
                     );
@@ -289,7 +292,7 @@ class _MyHomePageState extends State<MyHomePage>
                               height: 100,
                               alignment: Alignment.centerRight,
                               child: Image.asset(
-                                "assets/1.png",
+                                "assets/new1.png",
                                 fit: BoxFit.contain,
                               )),
                         ),
@@ -359,7 +362,7 @@ class _MyHomePageState extends State<MyHomePage>
                               height: 100,
                               alignment: Alignment.centerRight,
                               child: Image.asset(
-                                "assets/3.png",
+                                "assets/new2.png",
                                 fit: BoxFit.contain,
                               )),
                         ),
