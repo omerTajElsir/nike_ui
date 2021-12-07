@@ -31,10 +31,10 @@ class _MyHomePageState extends State<MyHomePage>
   ];
 
   List<String> Images = [
-    "assets/1.png",
     "assets/2.png",
-    "assets/3.png",
     "assets/4.png",
+    "assets/1.png",
+    "assets/3.png",
   ];
 
   ValueNotifier<double> notifier = ValueNotifier<double>(0);
@@ -144,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage>
             ),
           ),
           Container(
-            height: 350,
+            height: 370,
             child: PageView.builder(
               controller: _pageController,
               itemCount: 4,
@@ -175,14 +175,14 @@ class _MyHomePageState extends State<MyHomePage>
                           tag: 'header$index',
                           child: Padding(
                             padding:
-                                const EdgeInsets.only(right: 30, bottom: 70),
+                                const EdgeInsets.only(right: 30, bottom: 50),
                             child: Material(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(30)),
                               color: colors[index],
                               child: Container(
                                 width: double.infinity,
-                                padding: EdgeInsets.only(left: 10, top: 30),
+                                padding: EdgeInsets.only(left: 20, top: 30),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -191,7 +191,7 @@ class _MyHomePageState extends State<MyHomePage>
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 32,
-                                          fontWeight: FontWeight.bold),
+                                          fontFamily: "AvenirBold"),
                                     ),
                                     SizedBox(
                                       height: 10,
@@ -199,7 +199,7 @@ class _MyHomePageState extends State<MyHomePage>
                                     Text("Men's Fashion Shows",
                                         style: TextStyle(
                                             color: Colors.white70,
-                                            fontSize: 14)),
+                                            fontSize: 16)),
                                     SizedBox(
                                       height: 25,
                                     ),
@@ -207,7 +207,7 @@ class _MyHomePageState extends State<MyHomePage>
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 28,
-                                            fontWeight: FontWeight.bold)),
+                                            fontFamily: "AvenirBold")),
                                   ],
                                 ),
                               ),
@@ -226,7 +226,7 @@ class _MyHomePageState extends State<MyHomePage>
                                       ? colorAnimation.value
                                       : colorAnimation1.value,
                                   child: Container(
-                                      margin: EdgeInsets.only(bottom: 20),
+                                      margin: EdgeInsets.only(bottom: 0),
                                       width: MediaQuery.of(context).size.width /
                                           3 *
                                           2,
@@ -310,10 +310,10 @@ class _MyHomePageState extends State<MyHomePage>
                     children: [
                       Text(
                         "Nike ZoomX fit",
-                        style: TextStyle(color: Colors.black87, fontSize: 16),
+                        style: TextStyle(color: Colors.black87, fontSize: 18,fontFamily: "AvenirBold"),
                       ),
                       SizedBox(
-                        height: 15,
+                        height: 10,
                       ),
                       Text(
                         "New Running shoes",
@@ -380,10 +380,10 @@ class _MyHomePageState extends State<MyHomePage>
                     children: [
                       Text(
                         "Nike React Presto",
-                        style: TextStyle(color: Colors.black87, fontSize: 16),
+                        style: TextStyle(color: Colors.black87, fontSize: 18,fontFamily: "AvenirBold"),
                       ),
                       SizedBox(
-                        height: 15,
+                        height: 10,
                       ),
                       Text(
                         "Men's fation shoes",
@@ -391,9 +391,13 @@ class _MyHomePageState extends State<MyHomePage>
                       ),
                     ],
                   ),
-                )
+                ),
+
               ],
             ),
+          ),
+          SizedBox(
+            height: 20,
           ),
         ],
       ), // This trailing comma makes auto-formatting nicer for build methods.

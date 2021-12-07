@@ -143,7 +143,7 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
                     height: 15,
                   ),
                   Text(
-                    "To Tawasol resource tracking app",
+                    "This is a demo shoe store UI",
                     style: TextStyle(
                         color: Colors.white.withOpacity(.7),
                         height: 1.4,

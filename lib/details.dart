@@ -105,8 +105,8 @@ class _DetailsPageState extends State<DetailsPage> {
                       widget.name,
                       style: TextStyle(
                           color: Colors.black,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
+                          fontSize: 32,
+                        fontFamily: "AvenirBold"),
                     ),
                   ),
                 ),
@@ -118,7 +118,7 @@ class _DetailsPageState extends State<DetailsPage> {
                       widget.desc,
                       style: TextStyle(
                           color: Colors.black,
-                          fontSize: 14,
+                          fontSize: 16,
                           fontWeight: FontWeight.normal),
                     ),
                   ),
@@ -131,8 +131,8 @@ class _DetailsPageState extends State<DetailsPage> {
                       widget.price+"\$",
                       style: TextStyle(
                           color: Colors.black,
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold),
+                          fontSize: 28,
+                          fontFamily: "AvenirBold"),
                     ),
                   ),
                 ),
@@ -174,9 +174,10 @@ class _DetailsPageState extends State<DetailsPage> {
 
                 Container(
                   width: double.infinity,
+                  padding: EdgeInsets.only(left: 40),
                   height: 100,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
                     children: [
                       Container(
                         width: 100,
@@ -204,6 +205,7 @@ class _DetailsPageState extends State<DetailsPage> {
                           ],
                         ),
                       ),
+                      SizedBox(width: 20,),
                       Container(
                         width: 100,
                         height: 100,
@@ -230,6 +232,7 @@ class _DetailsPageState extends State<DetailsPage> {
                           ],
                         ),
                       ),
+                      SizedBox(width: 20,),
                       Container(
                         width: 100,
                         height: 100,
@@ -265,17 +268,15 @@ class _DetailsPageState extends State<DetailsPage> {
                 Container(
                   alignment: Alignment.center,
                   width: MediaQuery.of(context).size.width,
+                  margin:  const EdgeInsets.only(left: 40,right: 40),
                   child: Material(
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                     color: Colors.black,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 40,right: 40),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width/2,
-                        height: 70,
-                        child: Center(
-                            child: Text("But Now",style: TextStyle(color: Colors.white),)),
-                      ),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 80,
+                      child: Center(
+                          child: Text("But Now",style: TextStyle(color: Colors.white,fontSize: 18),)),
                     ),
                   ),
                 ),
