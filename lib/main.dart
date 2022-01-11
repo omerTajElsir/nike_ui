@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder(
       ///Setting the splash screen for 3 seconds then displaying home page
-      future: Future.delayed(Duration(milliseconds: 5000)),
+      future: Future.delayed(Duration(milliseconds: 3800)),
       builder: (context, AsyncSnapshot snapshot) {
         // Show splash screen while waiting for app resources to load:
         if (snapshot.connectionState == ConnectionState.waiting) {

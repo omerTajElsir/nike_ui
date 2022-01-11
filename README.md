@@ -1,16 +1,14 @@
-# nike_ui
+# Nike UI : Flutter shoes UI templete
 
-A new Flutter project.
+This is an open source app developed using flutter for displaying and animating shoes UI
 
-## Getting Started
+## Environment and set up
 
-This project is a starting point for a Flutter application.
+- Flutter varsion: Channel master, 2.6.0
+- APK : [drive link](https://drive.google.com/file/d/1Bai6PU4RBE912uqg2OsOA5cIb78w5Q4w/view?usp=sharing)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<p float="left">
+<img src="/screenshots/nikeVideo.gif" width=" 250"  >
+</p>

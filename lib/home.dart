@@ -156,12 +156,14 @@ class _MyHomePageState extends State<MyHomePage>
                       context,
                       PageRouteBuilder(
                         transitionDuration: Duration(seconds: 1),
+                        reverseTransitionDuration: Duration(seconds: 1),
                         pageBuilder: (_, __, ___) => DetailsPage(
                           index: index,
                           color: colors[index],
                           image: Images[index],
                           name: "Nike Air Max",
-                          desc: "Nike, Inc. is an American multinational that is engaged in the design.",
+                          desc:
+                              "Nike, Inc. is an American multinational that is engaged in the design.",
                           price: "160",
                         ),
                       ),
@@ -310,7 +312,10 @@ class _MyHomePageState extends State<MyHomePage>
                     children: [
                       Text(
                         "Nike ZoomX fit",
-                        style: TextStyle(color: Colors.black87, fontSize: 18,fontFamily: "AvenirBold"),
+                        style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 18,
+                            fontFamily: "AvenirBold"),
                       ),
                       SizedBox(
                         height: 10,
@@ -380,7 +385,10 @@ class _MyHomePageState extends State<MyHomePage>
                     children: [
                       Text(
                         "Nike React Presto",
-                        style: TextStyle(color: Colors.black87, fontSize: 18,fontFamily: "AvenirBold"),
+                        style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 18,
+                            fontFamily: "AvenirBold"),
                       ),
                       SizedBox(
                         height: 10,
@@ -392,7 +400,6 @@ class _MyHomePageState extends State<MyHomePage>
                     ],
                   ),
                 ),
-
               ],
             ),
           ),
